@@ -7,6 +7,7 @@
     - [PHPunit](#phpunit)
     - [3の倍数の時には数の代わりに「Fizz」とプリントする](#3の倍数の時には数の代わりにfizzとプリントする)
     - [5の倍数の時には数の代わりに「Buzz」とプリントする](#5の倍数の時には数の代わりにbuzzとプリントする)
+    - [3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする](#3と5両方の倍数の時には数の代わりにfizzbuzzとプリントする)
 
 ## Rules
 
@@ -340,4 +341,45 @@
     ```shell
     $ composer test
     OK (4 tests, 10 assertions)
+    ```
+
+### 3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする
+
+1. テストを書く
+
+    ```php
+    public function test_3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする()
+    {
+      foreach ([15, 30, 45] as $num) {
+        $this->assertEquals('FizzBuzz', FizzBuzz::say($num));
+      }
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Failed asserting that two strings are equal.
+    --- Expected
+    +++ Actual
+    @@ @@
+    -'FizzBuzz'
+    +'Fizz'
+    ```
+
+1. テストに合格する
+
+    ```php
+    public static function say($num) {
+      if ($num % 15 === 0) {
+        return 'FizzBuzz';
+      }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (5 tests, 13 assertions)
     ```

@@ -33,4 +33,11 @@ class FizzBuzzTest extends TestCase
       $this->assertEquals('Buzz', FizzBuzz::say($num));
     }
   }
+
+  public function test_3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする()
+  {
+    foreach ([15, 30, 45] as $num) {
+      $this->assertEquals('FizzBuzz', FizzBuzz::say($num));
+    }
+  }
 }
