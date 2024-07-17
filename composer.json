@@ -1,0 +1,12 @@
+{
+    "name": "tyler36/fizzbuzz-php",
+    "scripts": {
+        "test": "echo hello"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tyler36\\FizzbuzzPhp\\": "src/"
+        }
+    },
+    "require": {}
+}
