@@ -5,6 +5,7 @@
   - [TDD](#tdd)
     - [composer test](#composer-test)
     - [PHPunit](#phpunit)
+    - [3の倍数の時には数の代わりに「Fizz」とプリントする](#3の倍数の時には数の代わりにfizzとプリントする)
 
 ## Rules
 
@@ -140,4 +141,163 @@
     ```  shell
     $ composer test
     OK (1 test, 1 assertion)
+    ```
+
+### 3の倍数の時には数の代わりに「Fizz」とプリントする
+
+1. テストを書く
+
+    ```php
+    public function test_1を返します()
+    {
+      $this->assertEquals(1, FizzBuzz::say(1));
+    }
+    ```
+
+1. テストを実行する
+
+    ```  shell
+    $ composer test
+    Error: Class "Tests\FizzBuzz" not found
+    ```
+
+1. 「src/FizzBuzz.php」ファイルを作成する
+
+    ```php
+    <?php
+    // src/FizzBuzz.php
+    namespace Tyler36\FizzBuzz;
+
+    class FizzBuzz {}
+    ```
+
+1. テストを実行する
+
+    ```  shell
+    $ composer test
+    Error: Class "Tests\FizzBuzz" not found
+    ```
+
+1. テストでファイルをインポートする
+
+    ```php
+    use Tyler36\FizzbuzzPhp\FizzBuzz;
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Error: Call to undefined method Tyler36\FizzbuzzPhp\FizzBuzz::say()
+    ```
+
+1. メソッドを追加
+
+    ```php
+    public static function say() {}
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Failed asserting that null matches expected 1.
+    ```
+
+1. 「スライム」テスト
+
+    ```php
+    public static function say() {
+      return 1;
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (1 test, 1 assertion)
+    ```
+
+1. テストを書く
+
+    ```php
+    public function test_2を返します()
+    {
+      $this->assertEquals(2, FizzBuzz::say(2));
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Failed asserting that 1 matches expected 2.
+    ```
+
+1. テストに合格する
+
+    ```php
+    public static function say($num) {
+      return $num;
+    }
+    ```
+
+1. テストを書く
+
+    ```php
+    public function test_3の倍数の時には数の代わりに「Fizz」とプリントする()
+    {
+      $this->assertEquals('Fizz', FizzBuzz::say(3));
+    }
+    ```
+
+1. テストに合格する
+
+    ```php
+    public static function say($num) {
+      if ($num == 3) {
+        return 'Fizz';
+      }
+
+      return $num;
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (3 tests, 3 assertions)
+    ```
+
+1. リファクタリングテスト
+
+    ```php
+    foreach ([3, 6, 9, 12] as $num) {
+      $this->assertEquals('Fizz', FizzBuzz::say($num));
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Failed asserting that 6 matches expected 'Fizz'.
+    ```
+
+1. テストに合格する
+
+    ```php
+    public static function say($num) {
+      if ($num % 3 === 0) {
+        return 'Fizz';
+      }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (3 tests, 6 assertions)
     ```
