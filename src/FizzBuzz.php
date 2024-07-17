@@ -4,18 +4,18 @@ namespace Tyler36\FizzbuzzPhp;
 
 class FizzBuzz {
   public static function say($num) {
-    if ($num % 15 === 0) {
-      return 'FizzBuzz';
-    }
+    $string = '';
 
     if ($num % 3 === 0) {
-      return 'Fizz';
+      $string .= 'Fizz';
     }
 
     if ($num % 5 === 0) {
-      return 'Buzz';
+      $string .= 'Buzz';
     }
 
-    return $num;
+    return $string
+      ? $string
+      : $num;
   }
 }

@@ -8,6 +8,7 @@
     - [3の倍数の時には数の代わりに「Fizz」とプリントする](#3の倍数の時には数の代わりにfizzとプリントする)
     - [5の倍数の時には数の代わりに「Buzz」とプリントする](#5の倍数の時には数の代わりにbuzzとプリントする)
     - [3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする](#3と5両方の倍数の時には数の代わりにfizzbuzzとプリントする)
+    - [Refactor: 文字列を連結する](#refactor-文字列を連結する)
 
 ## Rules
 
@@ -375,6 +376,35 @@
       if ($num % 15 === 0) {
         return 'FizzBuzz';
       }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (5 tests, 13 assertions)
+    ```
+
+### Refactor: 文字列を連結する
+
+1. 文字列を連結する
+
+    ```php
+    public static function say($num) {
+      $string = '';
+
+      if ($num % 3 === 0) {
+        $string .= 'Fizz';
+      }
+
+      if ($num % 5 === 0) {
+        $string .= 'Buzz';
+      }
+
+      return $string
+        ? $string
+        : $num;
+    }
     ```
 
 1. テストを実行する
