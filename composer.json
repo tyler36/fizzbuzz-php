@@ -1,12 +1,14 @@
 {
     "name": "tyler36/fizzbuzz-php",
     "scripts": {
-        "test": "echo hello"
+        "test": "phpunit"
     },
     "autoload": {
         "psr-4": {
             "Tyler36\\FizzbuzzPhp\\": "src/"
         }
     },
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
 }
