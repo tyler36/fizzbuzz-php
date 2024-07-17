@@ -6,6 +6,7 @@
     - [composer test](#composer-test)
     - [PHPunit](#phpunit)
     - [3の倍数の時には数の代わりに「Fizz」とプリントする](#3の倍数の時には数の代わりにfizzとプリントする)
+    - [5の倍数の時には数の代わりに「Buzz」とプリントする](#5の倍数の時には数の代わりにbuzzとプリントする)
 
 ## Rules
 
@@ -300,4 +301,43 @@
     ```shell
     $ composer test
     OK (3 tests, 6 assertions)
+    ```
+
+### 5の倍数の時には数の代わりに「Buzz」とプリントする
+
+1. テストを書く
+
+    ```php
+      public function test_5の倍数の時には数の代わりに「Buzz」とプリントする()
+      {
+        foreach ([5, 10, 20, 50] as $num) {
+          $this->assertEquals('Buzz', FizzBuzz::say($num));
+        }
+      }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Failed asserting that 5 matches expected 'Buzz'.
+    ```
+
+1. テストに合格する
+
+    ```php
+    if ($num % 3 === 0) {
+      return 'Fizz';
+    }
+
+    if ($num % 5 === 0) {
+      return 'Buzz';
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (4 tests, 10 assertions)
     ```
