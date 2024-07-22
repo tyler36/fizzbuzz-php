@@ -9,6 +9,7 @@
     - [5の倍数の時には数の代わりに「Buzz」とプリントする](#5の倍数の時には数の代わりにbuzzとプリントする)
     - [3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする](#3と5両方の倍数の時には数の代わりにfizzbuzzとプリントする)
     - [Refactor: 文字列を連結する](#refactor-文字列を連結する)
+    - [1から100までの数をプリントするプログラム](#1から100までの数をプリントするプログラム)
 
 ## Rules
 
@@ -137,7 +138,6 @@
     requireCoverageMetadata="true"
     colors="true"
     ```
-
 
 1. テストを実行する
 
@@ -412,4 +412,81 @@
     ```shell
     $ composer test
     OK (5 tests, 13 assertions)
+    ```
+
+### 1から100までの数をプリントするプログラム
+
+1. テストを書く
+
+    ```php
+    public function test_it_prints_numbers_to_100()
+    {
+      $filePath = getcwd() . '/example.txt';
+      $example = file_get_contents($filePath);
+
+      $this->assertSame($example, FizzBuzz::list(100));
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    Error: Call to undefined method Tyler36\FizzbuzzPhp\FizzBuzz::list()
+    ```
+
+1. テストに合格します
+
+    ```php
+    public function list(){}
+    ```
+
+1. テストに合格します
+
+    ```shell
+    $ composer test
+    1) Tests\FizzBuzzTest::test_it_prints_numbers_to_100
+    Failed asserting that null is identical to '1\n
+    2\n
+    Fizz\n
+    4\n
+    Buzz\n
+    ```
+
+1. ss
+
+    ```php
+    public static function list($last)
+    {
+      $list = '';
+      for ($i=0; $i < $last; $i++) {
+        $list .= self::say($i+1) . PHP_EOL;
+      }
+
+      return $list;
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (6 tests, 14 assertions)
+    ```
+
+1. Refactor
+
+    ```php
+    $list = '';
+
+    foreach (range(1, $last) as $key => $value) {
+      $list .= self::say($value) . PHP_EOL;
+    }
+    ```
+
+1. テストを実行する
+
+    ```shell
+    $ composer test
+    OK (6 tests, 14 assertions)
     ```

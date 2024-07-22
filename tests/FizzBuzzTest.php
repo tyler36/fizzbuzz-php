@@ -40,4 +40,12 @@ class FizzBuzzTest extends TestCase
       $this->assertEquals('FizzBuzz', FizzBuzz::say($num));
     }
   }
+
+  public function test_1から100までの数をプリントするプログラム()
+  {
+    $filePath = getcwd() . '/example.txt';
+    $example = file_get_contents($filePath);
+
+    $this->assertSame($example, FizzBuzz::list(100));
+  }
 }

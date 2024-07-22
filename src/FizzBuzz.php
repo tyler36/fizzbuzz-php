@@ -18,4 +18,15 @@ class FizzBuzz {
       ? $string
       : $num;
   }
+
+  public static function list($last)
+  {
+    $list = '';
+
+    foreach (range(1, $last) as $key => $value) {
+      $list .= self::say($value) . PHP_EOL;
+    }
+
+    return $list;
+  }
 }
