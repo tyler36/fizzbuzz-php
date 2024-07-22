@@ -10,6 +10,7 @@
     - [3と5両方の倍数の時には数の代わりに「FizzBuzz」とプリントする](#3と5両方の倍数の時には数の代わりにfizzbuzzとプリントする)
     - [Refactor: 文字列を連結する](#refactor-文字列を連結する)
     - [1から100までの数をプリントするプログラム](#1から100までの数をプリントするプログラム)
+    - [Coverage](#coverage)
 
 ## Rules
 
@@ -489,4 +490,31 @@
     ```shell
     $ composer test
     OK (6 tests, 14 assertions)
+    ```
+
+### Coverage
+
+1. Update `phpunit.xml`
+
+    ```xml
+    <coverage includeUncoveredFiles="true">
+        <report>
+            <html outputDirectory="logs/php-coverage" lowUpperBound="50" highLowerBound="90" />
+        </report>
+    </coverage>
+    ```
+
+1. Update `composer.json`
+
+    ```json
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
+    },
+    ```
+
+1. Ignore coverage files.
+
+    ```git
+    logs/php-coverage/
     ```

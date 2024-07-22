@@ -1,7 +1,8 @@
 {
     "name": "tyler36/fizzbuzz-php",
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
     },
     "autoload": {
         "psr-4": {
