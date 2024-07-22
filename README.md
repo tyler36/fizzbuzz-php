@@ -11,6 +11,7 @@
     - [Refactor: 文字列を連結する](#refactor-文字列を連結する)
     - [1から100までの数をプリントするプログラム](#1から100までの数をプリントするプログラム)
     - [Coverage](#coverage)
+    - [GitHub Action](#github-action)
 
 ## Rules
 
@@ -517,4 +518,43 @@
 
     ```git
     logs/php-coverage/
+    ```
+
+### GitHub Action
+
+1. 「.github/workflows/testing/yml」ワークフローファイルを追加します。
+
+    ```yml
+    name: testing
+    on:
+      workflow_dispatch:
+      push:
+        branches: [main]
+      pull_request:
+        branches: [main]
+    jobs:
+      phpunit:
+        runs-on: ubuntu-latest
+        steps:
+          - name: "☁️ checkout repository"
+            uses: actions/checkout@v4
+          - name:  "🔧 Setup PHP"
+            uses: shivammathur/setup-php@v2
+            with:
+              php-version: 8.2
+              coverage: xdebug
+          - name: "📦 Cache Composer dependencies"
+            uses: actions/cache@v4
+            with:
+              path: /tmp/composer-cache
+              key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+          - name: "📦 Install Dependencies"
+            run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          - name: "✅ Execute tests via PHPUnit"
+            run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text
+          - name: "☁️ Upload artifacts"
+            uses: actions/upload-artifact@v4
+            with:
+              name: Logs
+              path: ./logs
     ```
