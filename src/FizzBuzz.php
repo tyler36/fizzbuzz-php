@@ -2,6 +2,9 @@
 
 namespace Tyler36\FizzbuzzPhp;
 
+/**
+ * Class FizzBuzz
+ */
 class FizzBuzz {
   public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
     $string = '';
