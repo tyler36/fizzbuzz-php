@@ -19,6 +19,9 @@ class FizzBuzz {
       : $num;
   }
 
+  /**
+   * 数値までの値をリストします。
+   */
   public static function list($last, $fizz = 'Fizz', $buzz = 'Buzz')
   {
     $list = '';
