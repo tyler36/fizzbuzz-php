@@ -3,7 +3,7 @@
 namespace Tyler36\FizzbuzzPhp;
 
 /**
- * Class FizzBuzz
+ * Fizz Buzz
  */
 class FizzBuzz {
   public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
@@ -13,7 +13,7 @@ class FizzBuzz {
       $string .= $fizz;
     }
 
-    if ($num % 5 === 0) {
+    if ($num % 15 === 0) {
       $string .= $buzz;
     }
 
