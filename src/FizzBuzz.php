@@ -3,7 +3,7 @@
 namespace Tyler36\FizzbuzzPhp;
 
 /**
- * Fizz Buzz
+ * Class FizzBuzz
  */
 class FizzBuzz {
   public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
