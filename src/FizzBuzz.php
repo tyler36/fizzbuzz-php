@@ -3,15 +3,15 @@
 namespace Tyler36\FizzbuzzPhp;
 
 class FizzBuzz {
-  public static function say($num) {
+  public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
     $string = '';
 
     if ($num % 3 === 0) {
-      $string .= 'Fizz';
+      $string .= $fizz;
     }
 
     if ($num % 5 === 0) {
-      $string .= 'Buzz';
+      $string .= $buzz;
     }
 
     return $string
@@ -19,12 +19,12 @@ class FizzBuzz {
       : $num;
   }
 
-  public static function list($last)
+  public static function list($last, $fizz = 'Fizz', $buzz = 'Buzz')
   {
     $list = '';
 
     foreach (range(1, $last) as $key => $value) {
-      $list .= self::say($value) . PHP_EOL;
+      $list .= self::say($value, fizz: $fizz, buzz: $buzz) . PHP_EOL;
     }
 
     return $list;

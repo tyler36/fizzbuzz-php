@@ -48,4 +48,14 @@ class FizzBuzzTest extends TestCase
 
     $this->assertSame($example, FizzBuzz::list(100));
   }
+
+  public function test_翻訳()
+  {
+    $this->assertSame('Apple', FizzBuzz::say(3, fizz: 'Apple'));
+    $this->assertSame('Pen', FizzBuzz::say(5, buzz: 'Pen'));
+    $this->assertSame('ApplePen', FizzBuzz::say(15, fizz: 'Apple', buzz: 'Pen'));
+
+    $list = '1'. PHP_EOL . '2' . PHP_EOL . 'Apple' . PHP_EOL . '4' . PHP_EOL . 'Pen'. PHP_EOL;
+    $this->assertSame($list, FizzBuzz::list(5, fizz: 'Apple', buzz: 'Pen'));
+  }
 }

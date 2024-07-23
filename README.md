@@ -12,6 +12,7 @@
     - [1から100までの数をプリントするプログラム](#1から100までの数をプリントするプログラム)
     - [Coverage](#coverage)
     - [GitHub Action](#github-action)
+    - [翻訳](#翻訳)
 
 ## Rules
 
@@ -557,4 +558,33 @@
             with:
               name: Logs
               path: ./logs
+    ```
+
+### 翻訳
+
+1. テストを書く
+
+    ```php
+    public function test_翻訳()
+    {
+      $this->assertSame('Apple', FizzBuzz::say(3, fizz: 'Apple'));
+      $this->assertSame('Pen', FizzBuzz::say(5, buzz: 'Pen'));
+      $this->assertSame('ApplePen', FizzBuzz::say(15, fizz: 'Apple', buzz: 'Pen'));
+      $this->assertSame('1', FizzBuzz::list(15, fizz: 'Apple', buzz: 'Pen'));
+    }
+    ```
+
+2. テストを実行する
+
+    ```php
+    public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
+      $string = '';
+
+      if ($num % 3 === 0) {
+        $string .= $fizz;
+      }
+      if ($num % 5 === 0) {
+        $string .= $buzz;
+      }
+    }
     ```
