@@ -7,6 +7,7 @@ use Tyler36\FizzbuzzPhp\FizzBuzz;
 
 /**
  * Class FizzBuzzTest.
+ * @see https://ja.wikipedia.org/wiki/Fizz_Buzz
  */
 class FizzBuzzTest extends TestCase
 {
