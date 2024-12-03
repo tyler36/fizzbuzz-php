@@ -4,6 +4,7 @@ namespace Tyler36\FizzbuzzPhp;
 
 /**
  * Class FizzBuzz
+ * @see https://ja.wikipedia.org/wiki/Fizz_Buzz
  */
 class FizzBuzz {
   public static function say($num, $fizz = 'Fizz', $buzz = 'Buzz') {
